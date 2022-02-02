@@ -30,7 +30,7 @@ class GithubStatus {
     const result = resp.data.components;
 
     return result
-      .map(({ name, status }: Component) => ({ name, status }))
+      .map(({ name, status }: Component) => ({ name, status: status.replace('_',' ') }))
       .filter((el: Component) => el.name !== "Visit www.githubstatus.com for more information");
   }
 
@@ -74,19 +74,19 @@ class GithubStatus {
         element.classList.add("operational");
         break;
 
-      case "degraded_performance":
+      case "degraded performance":
         element.classList.add("degraded_performance");
         break;
 
-      case "partial_outage":
+      case "partial outage":
         element.classList.add("partial_outage");
         break;
 
-      case "major_outage":
+      case "major outage":
         element.classList.add("major_outage");
         break;
 
-      case "under_maintenance":
+      case "under maintenance":
         element.classList.add("under_maintenance");
         break;
     }
